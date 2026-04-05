@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IntuiTexte</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Quicksand", sans-serif;
+        font-weight: 1000;
+      }
+
+      h1 {
+        color: #ff4da6;
+        font-size: 4em;
+      }
+
+      h2.fixed-title {
+        color: #ffc94d;
+        /* turquoise clair */
+      }
+
+      h3 {
+        color: #ff6f61;
+        /* turquoise clair */
+      }
+
+      h4 {
+        color: #50fa7b;
+        /* turquoise clair */
+      }
+
+      .step {
+        display: none;
+      }
+
+      .step.active {
+        display: block;
+      }
+
+      .fixed-bottom {
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .fixed-title {
+        position: sticky;
+        top: 0;
+        background-color: #212529;
+        /* même couleur que bg-dark */
+        z-index: 100;
+        /* inférieur à celui du modal */
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #startBtn {
+        background-color: #ffc94d;
+        color: #212529;
+        /* texte sombre pour bon contraste */
+        border: none;
+      }
+
+      #startBtn:hover {
+        background-color: #ff4da6;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-light">
+    <div
+      class="progress position-fixed top-0 start-0 w-100"
+      style="height: 4px; z-index: 2000"
+    >
+      <div
+        id="progressBar"
+        class="progress-bar bg-info"
+        role="progressbar"
+        style="width: 0%"
+        aria-valuenow="0"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+
+    <div class="container py-5">
+      <!-- Introduction -->
+      <div id="intro" class="bg-dark text-light p-4 rounded">
+        <h1 class="mb-4 text-center">IntuiTexte</h1>
+        <p>
+          Écrire une chanson, c’est partir d’une page blanche et y déposer ses
+          émotions, ses images et ses mots. Mais face à cette page,
+          l’inspiration n’est pas toujours immédiate : les idées se bousculent
+          ou, au contraire, semblent absentes. Le jeu
+          <a
+            href="https://sefirot.it/fr/intuiti-creative-cards/learn-how-to-use"
+            target="_blank"
+            ><strong>Intùiti</strong></a
+          >
+          peut devenir un précieux allié pour franchir ces étapes, en stimulant
+          l’intuition, en provoquant des associations inattendues et en ouvrant
+          des chemins nouveaux dans le processus créatif.
+        </p>
+
+        <p>
+          Cette méthode propose un
+          <strong>parcours complet et structuré</strong> pour passer de la page
+          blanche au texte final d’une chanson, en utilisant Intùiti comme outil
+          d’idéation à chaque étape.
+        </p>
+
+        <!-- Bouton "lire la suite" -->
+        <button
+          id="toggleIntroBtn"
+          class="btn btn-dark btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#introCollapse"
+          aria-expanded="false"
+          aria-controls="introCollapse"
+        >
+          Lire la suite
+        </button>
+
+        <!-- Contenu étendu caché -->
+        <div class="collapse" id="introCollapse">
+          <p>
+            Chaque phase de l’écriture sera accompagnée d’un
+            <strong>exercice spécifique avec les cartes</strong>, conçu pour
+            atteindre les objectifs de l’étape : trouver un thème, explorer des
+            émotions, générer des images poétiques, clarifier un message,
+            affiner le texte…
+          </p>
+          <p>
+            En avançant étape par étape, vous découvrirez comment les cartes, à
+            travers leurs images, leurs récits et leurs archétypes, peuvent
+            nourrir votre écriture sans jamais l’enfermer. L’objectif n’est pas
+            de laisser le jeu décider à votre place, mais de l’utiliser comme
+            <strong>miroir et catalyseur</strong> de votre propre imaginaire.
+          </p>
+          <p>
+            Prêt à embarquer dans ce voyage créatif ? Prenez votre jeu Intùiti,
+            un carnet, et commençons.
+          </p>
+          <p><strong>Plan et mode d’emploi de la méthode</strong></p>
+          <p>
+            Cette méthode suit les <strong>10 étapes clés</strong> du processus
+            d’écriture d’une chanson, chacune correspondant à un moment
+            essentiel :
+          </p>
+          <ul>
+            <li>Définir l’intention et le thème</li>
+            <li>Choisir la perspective et la voix</li>
+            <li>Brainstormer sans filtre</li>
+            <li>Organiser les idées</li>
+            <li>Esquisser la structure de la chanson</li>
+            <li>Écrire un premier jet rapide</li>
+            <li>Lire à voix haute et ajuster le rythme</li>
+            <li>Chercher des rimes ou des échos sonores</li>
+            <li>Affiner le texte</li>
+            <li>Prendre du recul et finaliser</li>
+          </ul>
+          <p>Pour chaque étape, vous trouverez :</p>
+          <ul>
+            <li>
+              <strong>L’objectif</strong> de l’étape (ce qu’il s’agit
+              d’accomplir)
+            </li>
+            <li>
+              <strong
+                >Un exercice spécifique utilisant les cartes Intùiti</strong
+              >, adapté à l’objectif
+            </li>
+            <li>
+              <strong>Des consignes concrètes</strong> pour réaliser l’exercice
+              (nombre de cartes, face visible ou non, manière de les
+              interpréter, questions à poser…)
+            </li>
+            <li>
+              <strong
+                >Une explication du lien entre les résultats de l’exercice et
+                l’avancée de l’écriture</strong
+              >
+            </li>
+          </ul>
+          <p>
+            La méthode peut être suivie dans l’ordre, étape par étape, ou
+            adaptée selon vos besoins. Chaque exercice peut être fait en solo ou
+            partagé à plusieurs si vous coécrivez. Vous pouvez noter directement
+            vos idées sur un carnet ou les enregistrer oralement.
+          </p>
+          <p><strong>Mode opératoire :</strong></p>
+          <ol>
+            <li>Lisez attentivement l’objectif et les consignes de l’étape.</li>
+            <li>
+              Réalisez l’exercice avec les cartes en suivant les instructions.
+            </li>
+            <li>
+              Prenez un temps pour
+              <strong>interpréter, noter et transformer</strong> ce que les
+              cartes vous inspirent.
+            </li>
+            <li>
+              Appliquez ces éléments directement à l’écriture de votre chanson
+              avant de passer à l’étape suivante.
+            </li>
+          </ol>
+          <p>
+            Vous pouvez refaire un exercice si vous sentez qu’une idée n’est pas
+            assez creusée, ou si vous souhaitez explorer une piste alternative.
+            Les cartes n’apportent pas des réponses toutes faites : elles
+            ouvrent des <strong>possibilités</strong>. C’est vous qui choisissez
+            ce que vous en faites.
+          </p>
+          <p>
+            Avec cette approche, Intùiti devient un
+            <strong>compagnon de route créatif</strong>, à la fois stimulant,
+            ludique et introspectif.
+          </p>
+        </div>
+
+        <button id="startBtn" class="btn mt-3 d-block mx-auto">
+          <strong>Commencer</strong>
+        </button>
+      </div>
+
+      <!-- Étapes -->
+      <div id="stepsContainer">
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 1 – Définir l’intention et le thème</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Quand on commence à écrire une chanson, il est essentiel de savoir
+            <strong>de quoi on parle et pourquoi on le fait</strong>. Cette
+            première étape sert à clarifier l’<strong>intention</strong> de
+            votre chanson : l’émotion principale, le sujet, le message ou la
+            question qui la porte. Sans cette intention, il est facile de se
+            perdre en cours de route ou d’écrire un texte qui manque de
+            cohérence et de force.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            À l’issue de cette étape, vous aurez produit un
+            <strong
+              >court paragraphe ou une phrase résumant l’intention de votre
+              chanson</strong
+            >, ainsi que <strong>quelques mots-clés</strong> qui en expriment le
+            thème central et l’ambiance. Ce texte servira de
+            <strong>boussole</strong> pour toutes les étapes suivantes.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti pour
+            <strong>faire émerger un thème ou une émotion principale</strong>,
+            non pas en tirant un sujet “au hasard”, mais en explorant ce qui
+            <strong>résonne émotionnellement en vous</strong>. Ce tirage sera un
+            déclencheur d’idées et un révélateur d’envies profondes.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous dans un endroit calme, où vous pouvez réfléchir
+              sans être interrompu.
+            </li>
+            <li>
+              Munissez-vous de votre jeu Intùiti, d’un carnet et d’un stylo.
+            </li>
+            <li>
+              Prenez 5 minutes pour
+              <strong>fermer les yeux et respirer tranquillement</strong>, en
+              vous demandant : “De quoi ai-je envie de parler ? Quelle émotion
+              cherche à s’exprimer aujourd’hui ?”
+            </li>
+            <li>
+              Laissez ces questions flotter sans chercher de réponse immédiate.
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Sélection des cartes</strong>
+              <p>
+                Séparez les
+                <strong>cartes principales (Primary Intùiti)</strong> des
+                secondaires. Étalez les cartes principales
+                <strong>face visible</strong> devant vous.
+              </p>
+            </li>
+            <li>
+              <strong>Choix intuitif</strong>
+              <p>
+                Regardez les cartes attentivement et laissez-vous guider par vos
+                émotions. Choisissez <strong>2 cartes</strong> : une qui vous
+                attire le plus et une qui vous dérange ou vous met mal à l’aise.
+              </p>
+            </li>
+            <li>
+              <strong>Verbalisation libre</strong>
+              <p>
+                Pour chaque carte : observez-la, puis
+                <strong
+                  >décrivez à voix haute ou à l’écrit ce qu’elle vous
+                  évoque</strong
+                >. Quelles images, souvenirs, envies ? Notez tout.
+              </p>
+            </li>
+            <li>
+              <strong>Lecture des contes et impératifs</strong>
+              <p>
+                Lisez dans le livret Intùiti
+                <strong>le conte et l’impératif associés à chaque carte</strong
+                >. Réfléchissez : qu’est-ce que ces histoires et conseils
+                réveillent en vous ? Complétez vos notes.
+              </p>
+            </li>
+            <li>
+              <strong>Synthèse</strong>
+              <p>
+                Relisez vos notes. Soulignez les
+                <strong>mots-clés et idées fortes</strong>. Rédigez une
+                <strong>phrase ou un petit paragraphe</strong> résumant votre
+                intention : “Ma chanson parlera de…”, “J’ai envie d’explorer…”,
+                “Je veux transmettre l’émotion de…”.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Une <strong>phrase d’intention claire</strong> (exemple : “Je veux
+            écrire une chanson sur la peur de l’échec et le besoin de liberté”).
+            Une liste de <strong>5 à 10 mots-clés ou images fortes</strong>
+            issues de votre tirage et de votre réflexion. Ce texte et ces mots
+            seront votre
+            <strong>repère</strong> tout au long de l’écriture.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Ajouter une <strong>troisième carte</strong> si vous hésitez ou si
+              vous voulez enrichir votre intention avec une nuance
+              supplémentaire.
+            </li>
+            <li>
+              Refaire l’exercice en
+              <strong>tirant les cartes face cachée</strong> pour introduire
+              plus de surprise ou d’aléatoire.
+            </li>
+            <li>
+              Si vous travaillez sur un album ou un projet plus large, répétez
+              l’exercice pour plusieurs chansons et comparez les intentions.
+            </li>
+          </ul>
+
+          <h3>A suivre...</h3>
+          <p>
+            Maintenant que vous avez clarifié
+            <strong>ce que vous voulez dire et pourquoi</strong>, il est temps
+            de choisir <strong>comment vous allez le dire</strong> : qui parle,
+            à qui, et de quel point de vue. Passons à l’étape suivante :
+            <em>choisir la perspective et la voix</em>.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">
+            Étape 2 – Choisir la perspective et la voix
+          </h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Après avoir défini ce que vous voulez dire, il faut déterminer qui
+            parle dans votre chanson et à qui il ou elle s’adresse. Ce choix de
+            perspective et de voix influence le ton, les pronoms utilisés, et
+            l’émotion ressentie.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous repartirez de cette étape avec une phrase claire précisant la
+            perspective et la voix narrative de votre chanson (exemple : “C’est
+            moi qui parle à mon ex”). Ce choix guidera la manière dont vous
+            écrirez vos paroles.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti pour explorer différentes
+            perspectives possibles, en imaginant qu’elles représentent des
+            “voix” ou des “regards”. Chaque carte permettra d’essayer une
+            posture ou un point de vue narratif, pour voir ce qui résonne le
+            plus.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Relisez votre phrase d’intention et vos mots-clés de l’étape 1.
+            </li>
+            <li>
+              Installez-vous confortablement avec votre jeu Intùiti, un carnet
+              et un stylo.
+            </li>
+            <li>
+              Prenez 2 minutes pour fermer les yeux et vous poser la question
+              suivante : “Qui porte ce message ? Qui raconte cette histoire ?”
+            </li>
+            <li>Ouvrez les yeux en gardant cette question ouverte.</li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Sélection des cartes</strong>
+              <p>
+                Utilisez les cartes principales (Primary Intùiti). Mélangez-les
+                et disposez-les face visible devant vous.
+              </p>
+            </li>
+            <li>
+              <strong>Choix intuitif</strong>
+              <p>
+                Regardez les cartes en vous demandant : “Laquelle pourrait
+                représenter la voix qui raconte ?” Choisissez 3 cartes qui
+                attirent votre attention ou vous intriguent.
+              </p>
+            </li>
+            <li>
+              <strong>Exploration des perspectives</strong>
+              <p>
+                Pour chaque carte, imaginez que c’est un personnage ou une voix
+                qui parle. Décrivez à l’écrit ou à voix haute : qui est cette
+                personne ? À qui parle-t-elle ? Pourquoi parle-t-elle ? Dans
+                quel ton ou émotion ? Lisez ensuite le conte et l’impératif
+                associés à la carte et voyez si cela enrichit ou modifie votre
+                ressenti. Complétez vos notes.
+              </p>
+            </li>
+            <li>
+              <strong>Comparaison</strong>
+              <p>
+                Relisez vos trois descriptions. Laquelle correspond le mieux à
+                l’intention définie à l’étape 1 ? Laquelle semble la plus
+                naturelle, la plus puissante, ou la plus originale pour cette
+                chanson ?
+              </p>
+            </li>
+            <li>
+              <strong>Choix final</strong>
+              <p>
+                Rédigez une phrase simple et claire précisant la perspective
+                choisie (exemple : “C’est moi qui parle à moi-même”).
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Une phrase qui résume la perspective et la voix narrative de votre
+            chanson, et une courte description du personnage narrateur (s’il y
+            en a un) ou du rapport entre la voix et le destinataire.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez tirer une carte secondaire (Secondary Intùiti) pour
+              explorer le registre émotionnel de la voix choisie.
+            </li>
+            <li>
+              Si vous hésitez entre deux perspectives, vous pouvez les tester
+              toutes les deux lors de l’écriture du premier couplet.
+            </li>
+            <li>
+              Vous pouvez aussi décider que la perspective change entre les
+              couplets et le refrain.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Maintenant que vous savez qui parle et à qui, il est temps de faire
+            émerger les idées, images et émotions qui nourriront votre texte.
+            Passons à l’étape suivante : brainstormer sans filtre.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 3 – Brainstormer sans filtre</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous avez maintenant une intention claire et une perspective
+            définie. Avant de commencer à écrire des paroles structurées, il est
+            essentiel de libérer les idées, les images, les émotions et les mots
+            liés à votre thème. Cette étape est un temps de jaillissement
+            créatif, sans contrainte ni autocensure, pour explorer l’univers de
+            votre chanson.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            L’objectif est de produire un ensemble d’idées brutes, sous forme
+            de : mots-clés, phrases courtes, images, émotions, extraits de
+            dialogues ou de pensées. Vous obtiendrez une “matière première” à
+            partir de laquelle vous pourrez construire votre texte.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme déclencheurs
+            d’associations d’idées. Chaque carte servira de stimulus visuel,
+            narratif et symbolique. Le but n’est pas d’interpréter les cartes de
+            manière figée, mais de laisser les images et les mots venir
+            spontanément, même s’ils semblent décalés ou absurdes.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre jeu Intùiti, votre carnet et un stylo.
+            </li>
+            <li>
+              Relisez votre phrase d’intention et votre choix de perspective des
+              étapes précédentes.
+            </li>
+            <li>
+              Mettez une musique instrumentale douce ou un silence propice si
+              cela vous aide à vous concentrer.
+            </li>
+            <li>
+              Respirez profondément et dites-vous : “Tout ce que je vais noter
+              est valable. Rien n’est bête, trop simple ou trop étrange.”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Préparer le tirage</strong>
+              <p>
+                Prenez les cartes principales et les cartes secondaires,
+                mélangez-les ensemble. Étalez toutes les cartes face visible
+                devant vous.
+              </p>
+            </li>
+            <li>
+              <strong>Tirer les cartes</strong>
+              <p>
+                Sans réfléchir trop longtemps, choisissez 5 cartes qui vous
+                attirent. Vous pouvez les choisir selon les images, les couleurs
+                ou juste un ressenti.
+              </p>
+            </li>
+            <li>
+              <strong>Écrire sans filtre</strong>
+              <p>
+                Pour chaque carte : observez-la pendant 1 minute. Écrivez tout
+                ce qui vous vient : mots isolés, phrases, sensations, souvenirs,
+                images mentales, noms, lieux, actions… Lisez ensuite le conte et
+                l’impératif associés à la carte. Notez ce qu’ils vous inspirent.
+                Passez à la carte suivante.
+              </p>
+            </li>
+            <li>
+              <strong>Compléter librement</strong>
+              <p>
+                Après les 5 cartes, relisez vos notes. Si d’autres idées ou
+                associations apparaissent, ajoutez-les sans limite de temps.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Vous devriez avoir une page remplie de mots-clés, images, émotions,
+            phrases brutes, comme un grand nuage d’idées. Ce contenu formera
+            votre réservoir d’inspiration pour les prochaines étapes. Il n’a pas
+            besoin d’être organisé : il doit juste exister et foisonner.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez refaire l’exercice avec 5 nouvelles cartes si vous
+              sentez que votre page est trop vide ou que certains axes manquent.
+            </li>
+            <li>
+              Vous pouvez enregistrer vos réactions à voix haute plutôt que
+              d’écrire, si vous êtes plus à l’aise à l’oral.
+            </li>
+            <li>
+              Si vous travaillez en groupe, chaque membre peut tirer des cartes
+              et partager ses associations : vous enrichirez ainsi le champ des
+              idées.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Maintenant que vous avez récolté un maximum de matière brute, il est
+            temps de trier, d’organiser et de structurer ces idées pour
+            construire le squelette de votre chanson. Passons à l’étape
+            suivante : organiser les idées.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 4 – Organiser les idées</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous avez désormais vos idées principales triées et regroupées.
+            L’objectif de cette étape est de leur donner une place dans la
+            structure narrative et musicale de la chanson. Il s’agit de
+            réfléchir à l’enchaînement des moments, au rôle de chaque partie
+            (couplet, refrain, pont…), et à leur fonction émotionnelle et
+            symbolique.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez à l’issue de cette étape : une sélection de 10 à 20
+            mots-clés ou images fortes qui serviront de fil conducteur, et une
+            organisation de ces idées en catégories ou en parties de la chanson
+            (par exemple : idées pour les couplets, pour le refrain, pour le
+            pont).
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti pour vous aider à
+            hiérarchiser, regrouper et relier les idées issues du brainstorming.
+            Chaque carte servira de filtre ou de critère de tri pour voir
+            comment les idées s’organisent et s’articulent entre elles.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre carnet rempli de notes brutes, votre jeu
+              Intùiti, et un grand papier ou tableau blanc si possible.
+            </li>
+            <li>Relisez votre phrase d’intention et vos catégories.</li>
+            <li>
+              Relisez rapidement les notes du brainstorming en survolant
+              l’ensemble.
+            </li>
+            <li>
+              Dites-vous : “Je vais maintenant clarifier et sélectionner, en
+              confiance.”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Sélection des cartes</strong>
+              <p>
+                Mélangez les cartes principales et secondaires. Étalez-les face
+                visible devant vous.
+              </p>
+            </li>
+            <li>
+              <strong>Choisir des filtres d’organisation</strong>
+              <p>
+                Choisissez 3 cartes intuitivement. Imaginez que chaque carte est
+                une catégorie ou un critère de regroupement (exemple : ce qui
+                est doux, ce qui est douloureux, ce qui est tourné vers
+                l’autre).
+              </p>
+            </li>
+            <li>
+              <strong>Associer les idées aux cartes</strong>
+              <p>
+                Relisez chaque idée notée pendant le brainstorming. Pour chaque
+                idée, demandez-vous : “À quelle carte appartient-elle ? Avec
+                quelle énergie ou symbolique se relie-t-elle ?” Notez ou placez
+                physiquement chaque idée sous la carte correspondante.
+              </p>
+            </li>
+            <li>
+              <strong>Observer et compléter</strong>
+              <p>
+                Quand toutes les idées sont associées à une carte, observez vos
+                “piles”. Y a-t-il des déséquilibres ? Des catégories vides ? Des
+                idées orphelines ? Vous pouvez déplacer ou compléter si besoin.
+              </p>
+            </li>
+            <li>
+              <strong>Nommer les catégories</strong>
+              <p>
+                Donnez un nom simple et évocateur à chaque catégorie (exemple :
+                les blessures, les envies, les espoirs).
+              </p>
+            </li>
+            <li>
+              <strong>Décider d’un usage possible</strong>
+              <p>
+                Réfléchissez à l’utilisation de ces catégories dans la structure
+                de votre chanson (une catégorie pourrait nourrir les couplets,
+                une autre le refrain, une autre le pont).
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Trois catégories principales regroupant vos idées les plus fortes et
+            pertinentes, une liste resserrée de 10
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">
+            Étape 5 – Esquisser la structure de la chanson
+          </h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous disposez maintenant d’un plan clair : les idées sont triées et
+            réparties dans la structure de la chanson. L’enjeu de cette étape
+            est de passer de la carte au territoire, c’est-à-dire de transformer
+            ces idées en schéma narratif et émotionnel de votre chanson.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez à l’issue de cette étape un schéma ou plan de la
+            chanson, indiquant quelles idées appartiennent à chaque partie
+            (couplets, refrain, pont, intro, outro…). Ce plan servira de carte
+            routière pour l’écriture des paroles.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme balises symboliques :
+            chaque carte représentera l’énergie ou le sens d’une partie de la
+            chanson. Cela vous aidera à imaginer comment les émotions ou les
+            thèmes évoluent d’une section à l’autre.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre plan de chanson (étape 4), votre jeu
+              Intùiti, un grand papier ou un tableau blanc.
+            </li>
+            <li>Relisez votre phrase d’intention et vos catégories.</li>
+            <li>
+              Prenez 2 minutes de silence en vous posant ces questions : “Quelle
+              histoire ou quelle émotion veut se raconter ? Comment
+              évolue-t-elle ?”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Sélection des cartes</strong>
+              <p>
+                Prenez les cartes principales. Mélangez-les. Tirez 3 cartes face
+                cachée.
+              </p>
+            </li>
+            <li>
+              <strong>Attribuer les cartes aux parties principales</strong>
+              <p>
+                Attribuez chaque carte à une partie de la chanson : 1re carte =
+                couplet, 2e carte = refrain, 3e carte = pont ou variation.
+                Retournez les cartes et observez-les.
+              </p>
+            </li>
+            <li>
+              <strong>Interpréter les cartes comme énergies narratives</strong>
+              <p>
+                Pour chaque carte, posez ces questions : Quelle émotion
+                principale porte cette carte ? Quelle action ou idée clé
+                évoque-t-elle ? Quel ton lui correspond ? Notez les réponses
+                sous chaque partie.
+              </p>
+            </li>
+            <li>
+              <strong>Assigner vos idées aux parties</strong>
+              <p>
+                Relisez les mots-clés et images de l’étape 4. Demandez-vous :
+                “Quels mots ou quelles idées correspondent le mieux à l’énergie
+                de cette carte ?” Placez chaque idée dans la partie
+                correspondante.
+              </p>
+            </li>
+            <li>
+              <strong>Compléter ou ajuster</strong>
+              <p>
+                Si une partie est pauvre ou déséquilibrée, tirez une carte
+                supplémentaire pour l’enrichir. Si une idée ne semble aller
+                nulle part, gardez-la de côté pour l’instant.
+              </p>
+            </li>
+            <li>
+              <strong>Finaliser le schéma</strong>
+              <p>
+                Rédigez un plan simple et clair (exemple : Couplets : parlent de
+                la solitude, du souvenir. Refrain : affirmation de la liberté
+                retrouvée. Pont : moment de doute, tension, questionnement).
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un plan structuré de la chanson, indiquant pour chaque partie les
+            idées-clés, les émotions principales, les images ou mots récurrents,
+            et le ton général.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez tirer une carte secondaire pour chaque partie, afin
+              d’ajouter une nuance émotionnelle ou énergétique.
+            </li>
+            <li>
+              Si vous souhaitez un refrain qui contraste volontairement avec les
+              couplets, vous pouvez choisir la carte du refrain face visible et
+              la sélectionner intentionnellement.
+            </li>
+            <li>
+              Vous pouvez ajouter des cartes pour d’autres sections (intro,
+              outro, break).
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Votre chanson a maintenant un squelette narratif et émotionnel. Il
+            est temps de commencer à mettre les mots en forme et à écrire un
+            premier jet des paroles. Passons à l’étape suivante : écrire un
+            premier jet rapide.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 6 – Écrire un premier jet rapide</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous disposez maintenant d’un plan clair : les idées sont triées et
+            structurées dans votre chanson. L’enjeu de cette étape est de passer
+            de la structure au texte, c’est-à-dire de transformer ces idées en
+            phrases et en paroles. Il ne s’agit pas de viser la perfection, mais
+            de poser une version brute et complète du texte.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez à l’issue de cette étape un texte complet couvrant
+            l’ensemble de la chanson (couplets, refrains, pont…), même s’il est
+            encore imparfait. L’objectif est d’avoir de la matière à
+            retravailler.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme déclencheurs de
+            formulations et de tournures. Chaque carte associée à une partie de
+            la chanson (définie à l’étape précédente) va inspirer des
+            expressions, des images, des façons de dire. Ces cartes seront des
+            accélérateurs d’écriture spontanée.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre plan de chanson, votre carnet, votre jeu
+              Intùiti.
+            </li>
+            <li>
+              Relisez votre phrase d’intention et votre choix de perspective.
+            </li>
+            <li>
+              Prenez 2 minutes pour respirer et vous dire : “Ce premier jet n’a
+              pas besoin d’être bon. Il a besoin d’exister.”
+            </li>
+            <li>
+              Engagez-vous à écrire sans revenir en arrière ni corriger pour
+              l’instant.
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Préparer les cartes</strong>
+              <p>
+                Prenez les cartes que vous avez attribuées à chaque partie de la
+                chanson à l’étape précédente. Disposez-les face visible devant
+                vous, associées à leur partie respective.
+              </p>
+            </li>
+            <li>
+              <strong>Relire les mots-clés et notes de chaque partie</strong>
+              <p>
+                Sous chaque carte, relisez les idées et images que vous avez
+                associées à cette partie lors de l’étape précédente.
+              </p>
+            </li>
+            <li>
+              <strong>Utiliser les cartes comme générateurs d’écriture</strong>
+              <p>
+                Pour chaque partie : observez la carte pendant 1 à 2 minutes.
+                Posez-vous ces questions : “Si cette carte était une phrase, ce
+                serait quoi ?” “Si cette carte était une émotion, comment la
+                dirais-je ?” “Si cette carte était un symbole ou une image,
+                lequel ?” Répondez directement en écrivant une ou plusieurs
+                phrases, sans filtrer. Intégrez ces phrases dans l’écriture de
+                la partie.
+              </p>
+            </li>
+            <li>
+              <strong>Écrire la partie complète</strong>
+              <p>
+                En utilisant vos mots-clés, les phrases inspirées de la carte,
+                écrivez la partie complète sans vous arrêter ni effacer. Même si
+                ça vous semble maladroit ou cliché, continuez.
+              </p>
+            </li>
+            <li>
+              <strong>Passer à la partie suivante</strong>
+              <p>
+                Répétez le processus pour chaque partie de la chanson, en
+                suivant les cartes associées.
+              </p>
+            </li>
+            <li>
+              <strong>Lecture globale du premier jet</strong>
+              <p>
+                Quand toutes les parties sont écrites, relisez l’ensemble à voix
+                haute sans chercher à corriger.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un texte complet de chanson, avec des paroles provisoires couvrant
+            toutes les sections prévues. Ce texte pourra comporter des
+            répétitions, des maladresses ou des trous : c’est normal et attendu
+            à ce stade.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez tirer une nouvelle carte secondaire pour chaque partie
+              si vous sentez qu’une section manque d’émotion ou d’énergie.
+            </li>
+            <li>
+              Vous pouvez écrire sous forme de vers ou de prose, selon votre
+              aisance, sans vous limiter.
+            </li>
+            <li>
+              Vous pouvez enregistrer à l’oral vos phrases si vous êtes plus
+              inspiré en improvisant à haute voix.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Bravo ! Vous avez créé un premier jet complet. Il est maintenant
+            temps de tester ce texte en l’incarnant à l’oral, en ajustant son
+            rythme et sa musicalité. Passons à l’étape suivante : lire à voix
+            haute et ajuster le rythme.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">
+            Étape 7 – Lire à voix haute et ajuster le rythme
+          </h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous avez désormais un premier jet complet. Avant de travailler le
+            style ou les détails, il est essentiel de vérifier la musicalité et
+            le rythme du texte, pour s’assurer qu’il “tienne” à l’oral et qu’il
+            s’intègre dans une dynamique chantée. Cette étape vous permet de
+            repérer ce qui coule naturellement, ce qui accroche, ce qui se
+            répète ou alourdit, et de commencer à ajuster la fluidité.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            À l’issue de cette étape, vous aurez : identifié les passages
+            fluides et ceux à retravailler ; modifié ou simplifié certaines
+            phrases pour mieux coller au rythme et à l’émotion ; noté des
+            remarques sur les moments forts ou faibles de la chanson.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme métronomes symboliques
+            ou repères d’énergie rythmique. Chaque carte va vous aider à
+            percevoir le tempo émotionnel d’une partie et à décider si le texte
+            correspond ou doit être allégé, densifié ou accéléré.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous dans un endroit où vous pouvez lire et chanter à
+              voix haute sans gêne.
+            </li>
+            <li>
+              Prenez votre premier jet écrit, votre plan de chanson, vos cartes
+              Intùiti attribuées à chaque partie.
+            </li>
+            <li>
+              Ayez sous la main un stylo d’une couleur différente pour annoter
+              directement sur le texte.
+            </li>
+            <li>
+              Respirez tranquillement et dites-vous : “Je vais laisser le texte
+              résonner. Je n’ai pas besoin d’évaluer, seulement d’écouter ce
+              qu’il me dit.”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Préparer les cartes comme repères</strong>
+              <p>
+                Disposez devant vous les cartes associées à chaque partie
+                (tirées à l’étape 5). Relisez les interprétations émotionnelles
+                ou symboliques que vous aviez notées pour chaque carte.
+              </p>
+            </li>
+            <li>
+              <strong>Lire chaque partie à voix haute</strong>
+              <p>
+                Lisez (ou chantez si une mélodie vous vient spontanément) chaque
+                partie en regardant la carte correspondante. Posez-vous ces
+                questions pendant la lecture : “Est-ce que le texte correspond à
+                l’énergie de la carte ?” “Est-ce que je ressens un blocage ou
+                une hésitation ?” “Est-ce que les mots sont trop nombreux ou
+                trop courts ?”
+              </p>
+            </li>
+            <li>
+              <strong>Annoter directement</strong>
+              <p>
+                À chaque lecture, entourez, soulignez ou mettez des croix sur
+                les mots ou phrases : qui paraissent trop longs ou difficiles à
+                placer ; qui cassent l’émotion attendue par la carte ; qui sont
+                redondants ou inutiles. Notez aussi les moments particulièrement
+                fluides ou puissants.
+              </p>
+            </li>
+            <li>
+              <strong>Expérimenter des variantes</strong>
+              <p>
+                Testez des coupes : essayez de supprimer un mot ou une phrase et
+                relisez. Testez des ajouts si une idée semble manquer. Jouez
+                avec l’intonation, le débit, les silences.
+              </p>
+            </li>
+            <li>
+              <strong>Bilan</strong>
+              <p>
+                Pour chaque partie, notez en quelques phrases : ce qui
+                fonctionne bien, ce qui doit être modifié ou simplifié.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un texte annoté mettant en évidence : les ajustements de rythme à
+            effectuer ; les phrases à retravailler ou à reformuler ; les moments
+            clés à préserver. Une meilleure perception du tempo global de votre
+            chanson.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez inviter un ami à écouter votre lecture et noter ses
+              impressions à chaud.
+            </li>
+            <li>
+              Vous pouvez enregistrer votre lecture ou chant et l’écouter
+              ensuite pour repérer les accrochages.
+            </li>
+            <li>
+              Vous pouvez tirer une nouvelle carte secondaire si une partie
+              semble manquer de dynamique : elle peut suggérer une accélération
+              ou un ralentissement émotionnel.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Votre texte est maintenant mieux adapté à l’oral et à la musicalité.
+            Il est temps de travailler le style, d’affiner les images et de
+            renforcer l’impact poétique ou narratif. Passons à l’étape
+            suivante : affiner le texte.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">
+            Étape 8 – Chercher des rimes ou des échos sonores
+          </h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Votre texte est désormais posé et ajusté au rythme général. L’étape
+            suivante consiste à travailler la dimension sonore des mots : rimes,
+            assonances, allitérations, répétitions… Ces jeux sonores contribuent
+            à la musicalité, à la mémorisation et à l’impact émotionnel d’une
+            chanson.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez une liste de rimes ou d’échos sonores possibles et
+            un texte où certaines lignes auront été modifiées ou enrichies pour
+            mieux sonner ou rimer. Le livrable reste votre texte complet, avec
+            des ajustements sonores ciblés.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme déclencheurs
+            d’associations sonores et d’ambiances verbales. Chaque carte servira
+            à explorer une couleur ou une texture sonore, ou à inspirer des mots
+            supplémentaires jouant sur les sons.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre texte annoté, votre jeu Intùiti, un
+              carnet ou des feuilles pour les essais de rimes.
+            </li>
+            <li>
+              Relisez votre phrase d’intention et vos notes sur les émotions de
+              chaque partie.
+            </li>
+            <li>
+              Prenez 2 minutes pour vous demander : “Quelle ambiance sonore je
+              veux donner à cette chanson ? Plutôt douce, percussive, rugueuse,
+              liquide… ?”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Préparer les cartes par partie</strong>
+              <p>
+                Reprenez les cartes associées à chaque partie de la chanson.
+                Disposez-les devant vous, une carte par partie.
+              </p>
+            </li>
+            <li>
+              <strong>Observer les cartes comme générateurs sonores</strong>
+              <p>
+                Pour chaque carte : regardez-la pendant 1-2 minutes. Notez trois
+                sons, lettres ou syllabes que l’image ou le titre de la carte
+                vous évoque (exemple : un cercle = “o”, un éclat = “k” ou “é”).
+              </p>
+            </li>
+            <li>
+              <strong>Relire le texte en cherchant ces sons</strong>
+              <p>
+                Relisez votre texte de cette partie et demandez-vous : “Puis-je
+                introduire ces sons quelque part ?” “Puis-je remplacer un mot
+                pour faire apparaître ce son ?”
+              </p>
+            </li>
+            <li>
+              <strong>Chercher les rimes ou échos internes</strong>
+              <p>
+                Notez des mots qui riment ou partagent des sons proches. Testez
+                ces mots dans la phrase et relisez à voix haute.
+              </p>
+            </li>
+            <li>
+              <strong>Ajuster le texte</strong>
+              <p>
+                Intégrez les rimes ou les échos trouvés si cela renforce
+                l’émotion ou la musicalité. Veillez à ce que le sens reste clair
+                et fidèle à votre intention initiale.
+              </p>
+            </li>
+            <li>
+              <strong>Relire et écouter</strong>
+              <p>
+                Relisez la partie à voix haute en insistant sur les sons répétés
+                ou les rimes. Écoutez si cela amplifie ou détourne l’émotion.
+                Gardez uniquement ce qui sert votre chanson.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un texte plus musical, avec des rimes, des échos ou des répétitions
+            sonores bien placées, et une meilleure cohérence sonore entre les
+            parties grâce aux cartes comme “palettes” de sons.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez tirer une carte secondaire supplémentaire pour ajouter
+              une nouvelle dimension émotionnelle.
+            </li>
+            <li>
+              Vous pouvez tester ces ajustements directement sur la musique si
+              vous travaillez avec un compositeur.
+            </li>
+            <li>
+              Vous pouvez choisir de laisser des parties sans rime si cela sert
+              la sincérité ou l’originalité du texte.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Votre texte est maintenant plus riche sur le plan sonore. Il est
+            temps de l’affiner dans son style, ses images et ses détails pour en
+            faire une version aboutie et équilibrée. Passons à l’étape
+            suivante : affiner le texte.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 9 – Affiner le texte</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Vous disposez maintenant d’un texte complet, rythmé et déjà
+            travaillé sur le plan sonore. Il est temps de travailler la
+            précision du langage, la puissance des images, la cohérence poétique
+            et narrative. Cette étape vise à renforcer l’impact de chaque mot,
+            tout en gardant l’émotion intacte.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez un texte abouti, ciselé, prêt à être chanté ou
+            présenté à un compositeur, avec des formulations plus précises, des
+            images plus fortes ou plus cohérentes, des suppressions ou
+            simplifications de ce qui alourdit ou dilue le sens.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme moteurs
+            d’approfondissement symbolique et imagé. Chaque carte aidera à
+            explorer un angle, une émotion, un sous-texte dans les parties du
+            texte qui nécessitent plus de profondeur ou d’audace.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Installez-vous avec votre dernier texte annoté, votre jeu Intùiti,
+              un carnet et un stylo d’une couleur différente pour les
+              modifications.
+            </li>
+            <li>
+              Relisez votre phrase d’intention et les catégories clés des étapes
+              précédentes.
+            </li>
+            <li>
+              Posez-vous cette question : “Qu’est-ce que je veux que l’auditeur
+              ressente, image après image ?”
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Identifier les passages faibles</strong>
+              <p>
+                Relisez le texte en entier. Soulignez les parties : où l’image
+                est floue ou banale ; où le mot choisi est trop générique ou
+                répétitif ; où l’émotion est moins forte qu’attendu.
+              </p>
+            </li>
+            <li>
+              <strong>Tirer une carte pour chaque passage faible</strong>
+              <p>
+                Pour chaque passage souligné, tirez une carte (Primary ou
+                Secondary Intùiti) face visible. Posez-vous ces questions :
+                “Quelles images cette carte m’inspire ?” “Quelles émotions ou
+                actions cette carte évoque-t-elle ?” “Comment puis-je traduire
+                cela en mots ou en métaphore ?”
+              </p>
+            </li>
+            <li>
+              <strong>Réécrire chaque passage inspiré par la carte</strong>
+              <p>
+                Testez une nouvelle formulation directement inspirée de la
+                carte, en intégrant ses symboles ou son énergie. Relisez la
+                nouvelle version et vérifiez si elle renforce le sens, l’émotion
+                ou l’image.
+              </p>
+            </li>
+            <li>
+              <strong>Relire le texte dans son ensemble</strong>
+              <p>
+                Après avoir affiné tous les passages ciblés, relisez le texte
+                complet à voix haute. Vérifiez la cohérence générale et le
+                maintien du fil narratif et émotionnel.
+              </p>
+            </li>
+            <li>
+              <strong>Faire une dernière sélection</strong>
+              <p>
+                Supprimez les redondances ou les détails inutiles. Conservez
+                uniquement ce qui porte vraiment votre message et votre émotion.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un texte plus concis, fort, poétique, évocateur et fidèle à votre
+            intention initiale, équilibré entre images, émotions et sens, où
+            chaque mot est à sa place.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez utiliser une carte par couplet, par refrain, ou par
+              strophe, même sans cibler un passage faible, pour apporter un
+              contraste ou une surprise poétique.
+            </li>
+            <li>
+              Vous pouvez demander à quelqu’un d’autre de tirer les cartes et de
+              vous lire les contes et impératifs, pour générer des idées
+              extérieures.
+            </li>
+            <li>
+              Vous pouvez associer une carte à l’ensemble du texte, comme une
+              carte totem, pour vérifier si l’esprit général est respecté.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Votre texte est maintenant affiné et abouti. L’étape suivante sera
+            de tester ce texte en contexte musical ou scénique, pour voir
+            comment il vit et respire au contact de la musique ou de la
+            performance. Passons à l’étape suivante : prendre du recul et
+            finaliser.
+          </p>
+        </div>
+        <div class="step bg-dark text-light p-4 rounded">
+          <h2 class="fixed-title">Étape 10 – Prendre du recul et finaliser</h2>
+
+          <h3>Contexte</h3>
+          <p>
+            Votre texte est affiné, équilibré et travaillé. Mais avant de le
+            considérer comme terminé, il est important de prendre du recul pour
+            vérifier qu’il répond bien à votre intention initiale, qu’il est
+            cohérent et qu’il “tient debout” quand on le lit ou le chante d’un
+            seul trait. Cette étape permet aussi d’ajuster les derniers détails
+            et de s’assurer que chaque partie est à sa juste place.
+          </p>
+
+          <h3>Objectif</h3>
+          <p>
+            Vous obtiendrez un texte validé, complet et cohérent, prêt à être
+            chanté ou enregistré, et des remarques finales notées (si besoin)
+            pour de futures retouches ou discussions avec des collaborateurs.
+          </p>
+
+          <h3>Principe général</h3>
+          <p>
+            Nous allons utiliser les cartes Intùiti comme outils de vérification
+            symbolique et d’introspection finale. Une carte “miroir” tirée pour
+            l’ensemble du texte permettra de questionner globalement l’œuvre et
+            de vérifier si elle est alignée avec l’intention initiale.
+          </p>
+
+          <h3>Préparation</h3>
+          <ul>
+            <li>
+              Mettez de côté le texte pendant au moins une demi-journée,
+              idéalement un jour entier.
+            </li>
+            <li>
+              Pendant ce temps, évitez d’y penser ou de le relire. Laissez-le
+              reposer.
+            </li>
+            <li>
+              Installez-vous ensuite dans un endroit calme, avec votre texte
+              imprimé ou écrit, votre phrase d’intention, et votre jeu Intùiti.
+            </li>
+            <li>
+              Munissez-vous d’un crayon ou d’un stylo d’une couleur distincte
+              pour vos notes finales.
+            </li>
+          </ul>
+
+          <h3>Marche à suivre</h3>
+          <ol>
+            <li>
+              <strong>Relire la phrase d’intention</strong>
+              <p>
+                Avant de relire le texte, relisez votre phrase d’intention
+                rédigée à l’étape 1. Posez-vous cette question : “Est-ce que je
+                ressens encore la même intention ? A-t-elle évolué ?”
+              </p>
+            </li>
+            <li>
+              <strong>Lire ou chanter le texte d’un seul trait</strong>
+              <p>
+                Lisez (ou chantez) l’intégralité de votre texte à voix haute,
+                sans vous arrêter. Notez spontanément sur les marges : les
+                passages qui vous paraissent faibles ou trop longs ; les moments
+                où l’émotion baisse ou est incohérente ; les répétitions
+                inutiles ou les manques.
+              </p>
+            </li>
+            <li>
+              <strong>Tirer une carte “miroir”</strong>
+              <p>
+                Mélangez l’ensemble des cartes Intùiti (principales et
+                secondaires). Tirez une seule carte, face visible, et placez-la
+                devant vous. Considérez cette carte comme un miroir symbolique
+                de votre chanson.
+              </p>
+            </li>
+            <li>
+              <strong>Interpréter la carte en lien avec le texte</strong>
+              <p>
+                Lisez le conte et l’impératif de la carte. Posez-vous ces
+                questions : “Est-ce que cette carte correspond à l’esprit
+                général de ma chanson ?” “Quelles nouvelles nuances ou couches
+                de sens cette carte pourrait-elle m’inviter à ajouter ?” “Est-ce
+                que je perds ou renforce mon intention initiale en lien avec
+                cette carte ?” Notez les ajustements éventuels ou les
+                confirmations.
+              </p>
+            </li>
+            <li>
+              <strong>Ajuster les détails finaux</strong>
+              <p>
+                Apportez les dernières retouches en fonction des remarques
+                notées et de l’interprétation de la carte miroir. Relisez une
+                dernière fois à voix haute.
+              </p>
+            </li>
+            <li>
+              <strong>Valider le texte final</strong>
+              <p>
+                Décidez si le texte est suffisamment abouti pour être utilisé
+                tel quel, ou si vous souhaitez laisser encore un temps de
+                maturation.
+              </p>
+            </li>
+          </ol>
+
+          <h3>Résultat recherché</h3>
+          <p>
+            Un texte finalisé et validé, prêt à être chanté, mis en musique ou
+            présenté. Un sentiment de cohérence entre l’intention, les émotions,
+            les images et la forme.
+          </p>
+
+          <h3>Variantes et idées</h3>
+          <ul>
+            <li>
+              Vous pouvez tirer une carte par partie (couplet, refrain, pont)
+              plutôt qu’une seule carte miroir, pour valider section par
+              section.
+            </li>
+            <li>
+              Vous pouvez demander à un proche ou à un autre artiste de tirer la
+              carte miroir pour vous et d’en faire sa propre interprétation,
+              pour un regard extérieur.
+            </li>
+            <li>
+              Vous pouvez relire ou chanter le texte devant un petit public
+              test, puis tirer la carte miroir après avoir observé leurs
+              réactions.
+            </li>
+          </ul>
+
+          <h3>À suivre…</h3>
+          <p>
+            Félicitations ! Vous avez traversé toutes les étapes de la méthode,
+            en intégrant les cartes Intùiti comme compagnon d’idéation et de
+            création. Votre chanson est prête à rencontrer sa mise en musique,
+            son interprétation, ou son enregistrement.
+          </p>
+        </div>
+
+        <!-- Navigation -->
+        <div id="navigation" class="fixed-bottom bg-dark py-2 d-none">
+          <div class="container">
+            <div class="row">
+              <div class="col-4 text-start">
+                <button id="prevBtn" class="btn btn-outline-light">
+                  <span style="display: inline-block; transform: scaleX(-1)"
+                    >➜</span
+                  >
+                </button>
+              </div>
+              <div
+                class="col-4 text-center d-flex justify-content-center align-items-center gap-2"
+              >
+                <button id="restartBtn" class="btn btn-outline-secondary">
+                  <i class="fa-solid fa-house"></i>
+                </button>
+                <button
+                  id="generalAdviceBtn"
+                  class="btn btn-outline-warning"
+                  data-bs-toggle="modal"
+                  data-bs-target="#generalAdviceModal"
+                >
+                  💡
+                </button>
+                <button
+                  id="compositionBtn"
+                  class="btn btn-outline-info"
+                  data-bs-toggle="modal"
+                  data-bs-target="#compositionModal"
+                >
+                  🎵
+                </button>
+              </div>
+
+              <div class="col-4 text-end">
+                <button id="nextBtn" class="btn btn-primary">➜</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modale composition musicale -->
+        <div
+          class="modal fade"
+          id="compositionModal"
+          tabindex="-1"
+          aria-labelledby="compositionModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h4 class="modal-title" id="compositionModalLabel">
+                  Conseils de composition musicale
+                </h4>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Fermer"
+                ></button>
+              </div>
+              <div class="modal-body" id="compositionContent">
+                <!-- Contenu dynamique des conseils selon l'étape -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal conseils -->
+        <div
+          class="modal fade"
+          id="generalAdviceModal"
+          tabindex="-1"
+          aria-labelledby="generalAdviceModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-light">
+              <div class="modal-header">
+                <h4 class="modal-title" id="generalAdviceModalLabel">
+                  Conseils généraux
+                </h4>
+                <button
+                  type="button"
+                  class="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Fermer"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <!-- Texte des derniers conseils ici -->
+                <p>
+                  Avant de vous lancer ou pour accompagner chaque étape, gardez
+                  ces quelques principes en tête. Ils vous aideront à tirer le
+                  meilleur parti de la méthode et du processus créatif :
+                </p>
+                <ul>
+                  <li>
+                    <strong>Laissez du temps entre les étapes</strong> – Ne
+                    cherchez pas à tout enchaîner d’un bloc. Laissez reposer
+                    votre texte, vos idées et vos impressions entre certaines
+                    étapes.
+                  </li>
+                  <li>
+                    <strong
+                      >Relisez toujours à voix haute, même les
+                      brouillons</strong
+                    >
+                    – La chanson est faite pour être dite, chantée, entendue,
+                    pas seulement lue.
+                  </li>
+                  <li>
+                    <strong>N’ayez pas peur de l’imperfection au départ</strong>
+                    – Un premier jet chaotique est souvent le signe d’un vrai
+                    travail créatif en cours.
+                  </li>
+                  <li>
+                    <strong
+                      >Acceptez que la musique et le texte se corrigent
+                      mutuellement</strong
+                    >
+                    – Soyez prêt à ajuster l’un ou l’autre pour servir l’émotion
+                    globale.
+                  </li>
+                  <li>
+                    <strong
+                      >Utilisez les cartes comme déclencheurs, pas comme
+                      injonctions</strong
+                    >
+                    – Votre intuition reste la boussole principale.
+                  </li>
+                  <li>
+                    <strong
+                      >Notez vos ressentis et vos intentions à chaque
+                      étape</strong
+                    >
+                    – Conservez un carnet ou un document pour vos réflexions,
+                    doutes, choix et émotions.
+                  </li>
+                  <li>
+                    <strong
+                      >N’hésitez pas à collaborer ou à confronter vos
+                      résultats</strong
+                    >
+                    – Un regard extérieur bienveillant peut révéler ce que vous
+                    n’avez pas vu ou entendu.
+                  </li>
+                  <li>
+                    <strong>Gardez le plaisir au cœur du processus</strong> – Ne
+                    perdez pas le plaisir du jeu, de l’imprévu, de la
+                    découverte.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bootstrap JS + Script navigation -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+          const container = document.querySelector(".container");
+          const steps = document.querySelectorAll(".step");
+          const intro = document.getElementById("intro");
+          const stepsContainer = document.getElementById("stepsContainer");
+          const navigation = document.getElementById("navigation");
+          const prevBtn = document.getElementById("prevBtn");
+          const nextBtn = document.getElementById("nextBtn");
+          const compositionContent =
+            document.getElementById("compositionContent");
+          const startBtn = document.getElementById("startBtn");
+          const modal = document.getElementById("compositionModal");
+          const restartBtn = document.getElementById("restartBtn");
+
+          restartBtn.addEventListener("click", function () {
+            // Réafficher l'intro
+            intro.style.display = "block"; // forcer l'affichage si intro est masqué en display:none
+            intro.classList.remove("d-none");
+            document.removeEventListener("keydown", handleKeydown);
+
+            // Masquer toutes les étapes
+            steps.forEach((step) => {
+              step.classList.remove("active");
+              step.style.display = "none"; // au cas où
+            });
+
+            // Masquer la navigation
+            navigation.classList.add("d-none");
+
+            // Réinitialiser l'étape
+            currentStep = 0;
+
+            // Remettre la barre de progression à 0% explicitement
+            const progressBar = document.getElementById("progressBar");
+            progressBar.style.width = "0%";
+            progressBar.setAttribute("aria-valuenow", "0");
+          });
+
+          let currentStep = 0;
+          const compositions = [
+            `
+  
+  <p>Pendant ou après avoir écrit votre phrase d’intention, demandez-vous :</p>
+  <ul>
+    <li>Quelle ambiance sonore correspond à cette émotion ?</li>
+    <li>Est-ce un morceau lent ou rapide ?</li>
+    <li>Plutôt en majeur (lumineux) ou en mineur (mélancolique) ?</li>
+  </ul>
+  <p>Vous pouvez déjà noter ces impressions musicales sous votre phrase d’intention.</p>
+  <p><strong>Utiliser les cartes Intùiti comme déclencheurs d’ambiance musicale</strong></p>
+  <p>Les cartes tirées pour cette étape (une carte attirante, une carte dérangeante) peuvent aussi suggérer des textures musicales ou des instruments.</p>
+  <ul>
+    <li>Une carte abstraite et fluide évoquera peut-être un son ambient ou planant.</li>
+    <li>Une carte anguleuse ou contrastée pourrait inspirer une guitare rythmée ou un beat percussif.</li>
+  </ul>
+  <p><strong>Enregistrer une première esquisse musicale libre</strong></p>
+  <p>Si vous jouez d’un instrument ou composez, vous pouvez prendre 5 minutes pour improviser un accompagnement en regardant la carte choisie.</p>
+  <p>Cette improvisation peut être :</p>
+  <ul>
+    <li>Une suite d’accords.</li>
+    <li>Une ligne mélodique.</li>
+    <li>Un rythme de base.</li>
+  </ul>
+  <p>Même très simple, elle servira de première matière sonore en résonance avec le thème et l’intention.</p>
+  <p><strong>Créer un moodboard sonore</strong></p>
+  <p>Si vous ne composez pas encore, vous pouvez aussi choisir 2 ou 3 morceaux existants qui reflètent l’ambiance de votre thème et de vos cartes. Ces morceaux seront vos références musicales de départ.</p>
+  `,
+            `
+  <p>Ce choix de perspective et de voix influence aussi la manière dont la musique sera composée ou arrangée.</p>
+  <p><strong>Associer la voix narrative à une texture musicale</strong></p>
+  <p>Posez-vous ces questions pendant ou après avoir choisi votre perspective :</p>
+  <ul>
+    <li>Si ce narrateur avait un instrument, lequel serait-ce ? (piano intime, guitare brute, batterie martiale, synthé vaporeux…)</li>
+    <li>Quel type de voix ou de timbre musical représenterait cette personne ?</li>
+    <li>La voix est-elle proche (intime, chuchotée) ou loin (narrative, amplifiée) ?</li>
+  </ul>
+  <p>Ces réflexions peuvent déjà orienter le choix des instruments, des arrangements ou des effets sonores.</p>
+  <p><strong>Utiliser les cartes comme indicateurs de “tessiture émotionnelle”</strong></p>
+  <p>Les cartes choisies peuvent aussi symboliser des niveaux d’intensité ou de registre musical. Par exemple :</p>
+  <ul>
+    <li>Une carte douce et ronde pourrait suggérer une tessiture vocale grave et posée.</li>
+    <li>Une carte anguleuse et vive pourrait inviter à un chant plus aigu ou dynamique.</li>
+  </ul>
+  <p><strong>Improviser la voix sur un accompagnement simple</strong></p>
+  <p>À cette étape, vous pouvez tester quel timbre ou quel placement vocal correspond au narrateur choisi en improvisant :</p>
+  <ul>
+    <li>Parlez ou chantez spontanément un extrait du texte ou quelques mots-clés sur un accompagnement basique (par exemple un accord tenu ou une rythmique simple).</li>
+  </ul>
+  <p>Cela vous aidera à ressentir le ton émotionnel et musical que cette voix appelle.</p>
+  <p><strong>Adapter la structure musicale à la perspective</strong></p>
+  <p>Selon votre choix narratif, vous pouvez déjà anticiper :</p>
+  <ul>
+    <li>S’il y aura des changements de perspective entre les couplets et le refrain.</li>
+    <li>Si une montée en intensité sera nécessaire.</li>
+    <li>Si le narrateur est stable ou évolutif, et comment la musique accompagnera cette évolution.</li>
+  </ul>
+    `,
+            `
+  <p>Cette phase de brainstorming est aussi l’occasion de laisser émerger des couleurs musicales, des ambiances, des motifs. Pendant que vous notez vos mots et images, demandez-vous :</p>
+  <ul>
+    <li>Est-ce qu’un son ou un instrument me vient à l’esprit en lisant ce mot ?</li>
+    <li>Est-ce que cette image évoque une ambiance sonore précise ?</li>
+  </ul>
+  <p>Vous pouvez annoter chaque mot ou image avec un adjectif musical ou un instrument associé.</p>
+  <p><strong>Associer les images aux textures sonores</strong></p>
+  <p>Par exemple :</p>
+  <ul>
+    <li>“Brume” pourrait évoquer un synthé vaporeux ou un piano feutré.</li>
+    <li>“Fracas” pourrait appeler un beat marqué ou une guitare saturée.</li>
+  </ul>
+  <p><strong>Créer un lexique musical parallèle</strong></p>
+  <p>En marge de votre brainstorming, notez les ambiances musicales, instruments, effets, rythmes ou tempi que les cartes et les mots vous évoquent. Même si ce sont juste des impressions ou des adjectifs. Ce sera votre référentiel d’ambiance.</p>
+  <p><strong>Improviser musicalement sur les cartes</strong></p>
+  <p>Pour chaque carte tirée :</p>
+  <ul>
+    <li>Jouez ou improvisez une mini phrase musicale ou rythmique inspirée par l’image ou le texte de la carte.</li>
+    <li>Enregistrez ces esquisses rapidement (même sur un smartphone) : elles pourront devenir des motifs ou des idées d’arrangement plus tard.</li>
+  </ul>
+  <p><strong>Utiliser les cartes secondaires comme indicateurs d’énergie musicale</strong></p>
+  <p>Les cartes associées à l’eau, au feu, à l’air, à la terre peuvent aussi guider des choix d’énergie et de tempo. Par exemple :</p>
+  <ul>
+    <li>Une carte feu pourrait suggérer un rythme rapide ou syncopé.</li>
+    <li>Une carte eau un tempo lent et des sons liquides ou glissants.</li>
+  </ul>
+  <p><strong>Tester une improvisation libre sur la matière brute</strong></p>
+  <p>Lisez à voix haute les mots et images récoltés en les chantonnant spontanément sur une rythmique ou une boucle d’accords simple. Cela permet de sentir quels sons ou phrasés musicaux s’accordent naturellement au texte.</p>
+    `,
+            `
+  <p>Cette étape d’organisation des idées est aussi un moment clé pour commencer à penser la structure musicale de votre chanson.</p>
+  <p><strong>Associer les catégories aux sections musicales</strong></p>
+  <p>Pour chaque groupe d’idées formé sous une carte, demandez-vous :</p>
+  <ul>
+    <li>Cette catégorie correspond-elle mieux à un couplet, un refrain, un pont, une intro ?</li>
+    <li>Quelle fonction narrative ou émotionnelle porte cette catégorie, et comment cela peut-il se traduire en musique ?</li>
+  </ul>
+  <p>Par exemple :</p>
+  <ul>
+    <li>Une catégorie “colère” pourrait devenir le pont avec un climax instrumental.</li>
+    <li>Une catégorie “souvenir” pourrait nourrir les couplets avec une musique plus sobre.</li>
+  </ul>
+  <p><strong>Réfléchir à la dynamique musicale entre les catégories</strong></p>
+  <p>Regardez les cartes et les catégories alignées devant vous et posez-vous ces questions :</p>
+  <ul>
+    <li>Est-ce que l’énergie va crescendo, decrescendo, en vagues ?</li>
+    <li>Faut-il accélérer ou ralentir entre deux parties ?</li>
+    <li>Où placer les moments calmes, les pics d’intensité ?</li>
+  </ul>
+  <p><strong>Imaginer les instruments ou textures associés à chaque catégorie</strong></p>
+  <p>Pour chaque carte ou catégorie, notez un instrument, un type de son, une texture sonore qui correspond à cette “énergie” ou cette “voix”.</p>
+  <p>Exemple :</p>
+  <ul>
+    <li>Une carte douce = guitare acoustique ou cordes.</li>
+    <li>Une carte anguleuse = percussions sèches ou sons électroniques.</li>
+  </ul>
+  <p><strong>Improviser un enchaînement musical en suivant les catégories</strong></p>
+  <p>Si vous jouez d’un instrument, essayez de jouer un cycle enchaînant les accords ou motifs de chaque partie, en variant l’intensité ou le rythme selon ce que les cartes et le plan vous inspirent. Cela peut donner une première esquisse d’arrangement ou de structure musicale.</p>
+  <p><strong>Prendre en compte la longueur et la densité des catégories</strong></p>
+  <p>Observez : certaines catégories sont très riches en idées, d’autres plus légères. Cela peut influencer :</p>
+  <ul>
+    <li>La longueur musicale de chaque section.</li>
+    <li>L’intensité ou la complexité des arrangements.</li>
+  </ul>
+    `,
+            `
+  <p>Cette étape de structuration est aussi l’occasion de réfléchir à la structure musicale générale de votre chanson.</p>
+  <p><strong>Associer les cartes aux caractéristiques musicales de chaque partie</strong></p>
+  <p>Les cartes tirées pour chaque partie (couplet, refrain, pont) peuvent inspirer :</p>
+  <ul>
+    <li>Le tempo (lent, rapide…)</li>
+    <li>L’intensité (doux, fort, explosif…)</li>
+    <li>La texture sonore (acoustique, électronique, minimaliste…)</li>
+  </ul>
+  <p>Exemple :</p>
+  <ul>
+    <li>Une carte douce et fluide pour le couplet = tempo lent, arpèges discrets.</li>
+    <li>Une carte explosive pour le refrain = tempo plus rapide, batterie plus marquée, montée d’intensité.</li>
+  </ul>
+  <p><strong>Dessiner un schéma d’énergie musicale parallèle au texte</strong></p>
+  <p>Sous votre plan de chanson, tracez une courbe indiquant l’intensité musicale prévue. Demandez-vous :</p>
+  <ul>
+    <li>Où sont les pics d’émotion ou d’énergie ?</li>
+    <li>Où la musique doit-elle redescendre ou se suspendre ?</li>
+    <li>Où un silence ou un arrêt musical peut-il renforcer l’impact ?</li>
+  </ul>
+  <p><strong>Associer des instruments ou textures par section</strong></p>
+  <p>Pour chaque partie, notez quels instruments ou sons dominent, s’il y a des instruments récurrents ou spécifiques à une section.</p>
+  <p><strong>Improviser un enchaînement musical en suivant les parties</strong></p>
+  <p>Jouez ou imaginez un cycle enchaînant les accords ou motifs de chaque partie, en variant l’intensité ou le rythme selon les cartes et le plan. Cela peut donner une première esquisse d’arrangement ou de structure musicale.</p>
+  <p><strong>Prendre en compte la longueur et la répétition des parties</strong></p>
+  <p>Observez si certaines parties nécessitent plus de mesures ou de répétitions, en fonction de la densité des idées et de l’énergie portée par les cartes.</p>
+    `,
+            `
+  <p>Cette étape d’écriture du premier jet est aussi le moment de tester comment les mots s’accordent avec la musique, même de manière simple ou improvisée.</p>
+  <p><strong>Écrire en écoutant un accompagnement simple</strong></p>
+  <p>Pendant l’écriture du premier jet :</p>
+  <ul>
+    <li>Jouez en boucle une progression d’accords de base ou une rythmique simple correspondant à l’ambiance de chaque partie (inspirée des cartes tirées à l’étape 5).</li>
+    <li>Écrivez en laissant les mots se poser sur la musique spontanément, sans chercher tout de suite la métrique parfaite.</li>
+  </ul>
+  <p><strong>Tester les mots en les chantant ou scandant dès le premier jet</strong></p>
+  <p>N’attendez pas la fin du texte pour tester :</p>
+  <ul>
+    <li>Lisez ou chantez à voix haute au fur et à mesure de l’écriture, même sans mélodie fixée.</li>
+    <li>Laissez la musicalité des mots guider le choix des formulations.</li>
+  </ul>
+  <p><strong>Associer les cartes aux dynamiques vocales et phrasés</strong></p>
+  <p>Regardez les cartes associées à chaque partie et demandez-vous :</p>
+  <ul>
+    <li>Comment cette carte “parle” ou “chante” ? (doucement, saccadé, fluide, percutant ?)</li>
+    <li>Faut-il des phrases longues ou courtes pour incarner cette carte ?</li>
+  </ul>
+  <p><strong>Enregistrer des prises rapides</strong></p>
+  <p>En parallèle de l’écriture, vous pouvez :</p>
+  <ul>
+    <li>Vous enregistrer en train de lire, chanter ou improviser les paroles sur un accompagnement simple ou même a cappella.</li>
+    <li>Garder ces prises comme matière brute pour la mélodie ou le placement rythmique ultérieur.</li>
+  </ul>
+  <p><strong>Identifier les moments clés pour des accents musicaux</strong></p>
+  <p>Pendant l’écriture, repérez :</p>
+  <ul>
+    <li>Les mots ou images qui mériteraient un accent musical, un silence, un changement de dynamique.</li>
+    <li>Notez ces remarques à côté du texte. Elles guideront les arrangements ou l’interprétation.</li>
+  </ul>
+    `,
+            `
+  <p>Cette étape est aussi le moment de tester comment les mots s’accordent au rythme et à la musicalité globale.</p>
+  <p><strong>Lire ou chanter le texte sur un tempo ou une rythmique de base</strong></p>
+  <p>Utilisez un métronome, un beat simple ou une boucle d’accords correspondant à l’ambiance choisie (inspirée des cartes de l’étape 5).</p>
+  <ul>
+    <li>Chantez ou scandez vos paroles en suivant ce tempo, même si la mélodie n’est pas encore fixée.</li>
+    <li>Repérez les phrases trop longues ou trop courtes, les mots qui tombent bien ou mal sur les temps forts.</li>
+  </ul>
+  <p><strong>Marquer les accents musicaux directement sur le texte</strong></p>
+  <p>Soulignez ou entourez les mots ou syllabes qui tombent naturellement sur un accent rythmique ou harmonique. Cela vous aidera à décider où placer les appuis vocaux.</p>
+  <p><strong>Tester différentes vitesses et énergies musicales</strong></p>
+  <ul>
+    <li>Lisez ou chantez votre texte en essayant un tempo plus rapide ou plus lent.</li>
+    <li>Essayez un phrasé plus parlé ou plus chanté.</li>
+    <li>Essayez une attaque plus douce ou plus percussive.</li>
+  </ul>
+  <p>Ces essais vous montreront comment le texte réagit à différents traitements musicaux.</p>
+  <p><strong>Associer les cartes aux intentions vocales et rythmiques</strong></p>
+  <p>Regardez les cartes associées à chaque partie et demandez-vous :</p>
+  <ul>
+    <li>Quel style d’interprétation vocale cette carte m’inspire ? (retenu, explosif, intime, théâtral…)</li>
+    <li>Faut-il des phrases saccadées ou coulées ? Des silences ? Des syncopes ?</li>
+  </ul>
+  <p><strong>Enregistrer et écouter</strong></p>
+  <p>Enregistrez-vous en train de lire ou chanter le texte sur un accompagnement basique. Écoutez ensuite en vous concentrant uniquement sur la synchronisation parole-rythme. Notez ce qui glisse bien et ce qui coince.</p>
+    `,
+            `
+  <p>Cette étape est aussi l’occasion de tester comment les jeux sonores interagissent avec la musique.</p>
+  <p><strong>Penser les rimes comme des points d’ancrage mélodiques</strong></p>
+  <p>Chaque mot final d’un vers rimé peut servir de note pivot ou de pic mélodique. Pendant que vous cherchez vos rimes, testez en chantant différentes hauteurs de note sur ces mots pour voir lesquelles “sonnent” le mieux.</p>
+  <p><strong>Associer les cartes aux textures sonores et rythmiques des mots</strong></p>
+  <p>Les cartes tirées pour chaque partie peuvent inspirer des choix :</p>
+  <ul>
+    <li>Une carte fluide = privilégier des sons voyelles ouvertes, des rimes en “o”, “a”…</li>
+    <li>Une carte anguleuse = privilégier des consonnes dures, des sons “k”, “t”, “p”…</li>
+  </ul>
+  <p><strong>Tester les échos sonores sur une base musicale simple</strong></p>
+  <p>Jouez un accord tenu, une boucle rythmique ou un accompagnement basique. Lisez ou chantez vos phrases en écoutant comment les répétitions et rimes s’intègrent dans le flow musical.</p>
+  <p><strong>Décider des répétitions textuelles en fonction des répétitions musicales</strong></p>
+  <p>Si une section musicale inclut une boucle répétée, vous pouvez choisir de répéter aussi un mot ou une phrase, ou au contraire de la contraster avec une variation textuelle.</p>
+  <p><strong>Utiliser les rimes comme repères rythmiques</strong></p>
+  <p>Les rimes peuvent aider à caler le texte sur les temps forts de la mesure. Notez où tombent les rimes et testez si elles tombent naturellement sur le 1er temps, le 2e, ou un contretemps, selon l’effet voulu.</p>
+    `,
+            `
+  <p>Cette étape d’affinage du texte est aussi l’occasion de vérifier que le texte reste fluide et chantable sur la musique.</p>
+  <p><strong>Lire ou chanter chaque révision directement sur l’accompagnement musical</strong></p>
+  <p>À chaque modification ou ajustement d’une phrase, testez immédiatement en la chantant sur l’accord ou la rythmique prévue. Cela permet de sentir si la nouvelle formulation tient dans le flow musical ou nécessite d’autres ajustements.</p>
+  <p><strong>Associer les cartes aux nuances d’interprétation vocale</strong></p>
+  <p>Les cartes utilisées à l’étape 5 (ou une nouvelle carte tirée pour cette phase) peuvent inspirer :</p>
+  <ul>
+    <li>Une nuance dans l’interprétation vocale (plus feutrée, plus cassée, plus directe…)</li>
+    <li>Un placement rythmique différent (décalé, anticipé, posé sur un silence…)</li>
+  </ul>
+  <p><strong>Penser l’affinage du texte en parallèle avec l’arrangement</strong></p>
+  <p>À mesure que vous simplifiez ou densifiez un passage du texte, demandez-vous :</p>
+  <ul>
+    <li>Est-ce que cela appelle moins ou plus d’instruments ?</li>
+    <li>Est-ce que cela ouvre une place pour un silence musical ou un effet sonore ?</li>
+    <li>Est-ce que cette phrase mérite d’être seule ou soutenue par des chœurs ou un effet d’écho ?</li>
+  </ul>
+  <p><strong>Identifier les moments de respiration musicale</strong></p>
+  <p>Chaque coupure ou simplification de phrase peut devenir un espace de respiration musicale ou de silence. Notez ces endroits pour les intégrer dès la phase d’arrangement ou d’interprétation.</p>
+  <p><strong>Enregistrer un essai complet du texte sur la musique</strong></p>
+  <p>Une fois les ajustements réalisés, enregistrez une version chantée ou récitée sur la base musicale actuelle, même minimale. Écoutez en prenant des notes : la version affinée colle-t-elle toujours à l’énergie musicale ? Amplifie-t-elle ou amoindrit-elle certaines émotions ?</p>
+    `,
+            `
+  <p>Cette dernière étape est aussi l’occasion de tester le texte dans son ensemble avec la musique.</p>
+  <p><strong>Faire une écoute ou une interprétation complète avec la musique</strong></p>
+  <p>Chantez ou lisez l’intégralité du texte en le plaçant sur la structure musicale complète (même provisoire). Notez les passages où :</p>
+  <ul>
+    <li>Vous êtes en avance ou en retard sur le rythme.</li>
+    <li>Les mots tombent mal sur les temps forts.</li>
+    <li>L’émotion portée par la musique ne correspond pas ou pourrait être amplifiée.</li>
+  </ul>
+  <p><strong>Tirer une carte miroir pour l’ensemble musique-texte</strong></p>
+  <p>Tirez une carte unique en pensant non seulement au texte, mais à l’ensemble texte + musique + interprétation. Posez-vous ces questions :</p>
+  <ul>
+    <li>Est-ce que cette carte reflète l’âme du morceau ?</li>
+    <li>Que pourrait-elle m’inviter à ajouter ou simplifier musicalement ?</li>
+  </ul>
+  <p>Utilisez cette carte comme dernier guide symbolique pour des ajustements finaux d’arrangement, de ton ou d’interprétation.</p>
+  <p><strong>Valider la structure musicale en regard de la narration textuelle</strong></p>
+  <p>Relisez votre plan de chanson et votre schéma musical. Demandez-vous :</p>
+  <ul>
+    <li>Les parties musicales renforcent-elles bien les parties narratives ?</li>
+    <li>Le refrain a-t-il une montée musicale qui correspond à son rôle émotionnel ?</li>
+    <li>Le pont musical apporte-t-il une rupture ou un contraste suffisant ?</li>
+  </ul>
+  <p><strong>Enregistrer une version témoin texte + musique</strong></p>
+  <p>Faites une prise complète même simple (voix + accompagnement minimal ou playback instrumental). Écoutez en tant qu’auditeur, en essayant d’oublier que c’est votre morceau. Notez les ajustements finaux nécessaires sur le texte, le phrasé, la dynamique.</p>
+  <p><strong>Prendre du recul en désynchronisant texte et musique</strong></p>
+  <p>Relisez le texte seul, sans la musique, pour vérifier qu’il reste fort même à nu. Réécoutez la musique seule, pour vérifier qu’elle porte l’intention même sans les paroles. Cela vous assure que les deux couches peuvent fonctionner ensemble et séparément.</p>
+  `,
+          ];
+
+          function showStep(index) {
+            steps.forEach((step, i) => {
+              if (i === index) {
+                step.classList.add("active");
+                step.style.display = ""; // <- AJOUTER CETTE LIGNE
+              } else {
+                step.classList.remove("active");
+                step.style.display = "none";
+              }
+            });
+            navigation.classList.remove("d-none");
+            currentStep = index;
+            compositionContent.innerHTML = compositions[index] || "";
+
+            const progress = Math.round(((index + 1) / steps.length) * 100);
+            document.getElementById("progressBar").style.width = progress + "%";
+            document
+              .getElementById("progressBar")
+              .setAttribute("aria-valuenow", progress);
+
+            container.scrollTo(0, 0);
+            window.scrollTo(0, 0);
+          }
+
+          prevBtn.onclick = () => {
+            if (currentStep > 0) showStep(currentStep - 1);
+          };
+
+          nextBtn.onclick = () => {
+            if (currentStep < steps.length - 1) showStep(currentStep + 1);
+          };
+
+          startBtn.onclick = () => {
+            intro.style.display = "none"; // masque l'intro
+            showStep(0);
+            enableSwipe();
+            document.addEventListener("keydown", handleKeydown);
+          };
+
+          // GESTION DU SWIPE
+          let touchStartX = 0;
+          let touchEndX = 0;
+          let touchStartY = 0;
+          let touchEndY = 0;
+
+          function handleGesture() {
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = touchEndY - touchStartY;
+
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+              // le mouvement est principalement horizontal et dépasse 50px
+              if (deltaX < 0 && currentStep < steps.length - 1) {
+                showStep(currentStep + 1);
+              }
+              if (deltaX > 0 && currentStep > 0) {
+                showStep(currentStep - 1);
+              }
+            }
+          }
+
+          function startTouch(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+          }
+
+          function endTouch(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleGesture();
+          }
+
+          function enableSwipe() {
+            document.addEventListener("touchstart", startTouch);
+            document.addEventListener("touchend", endTouch);
+          }
+
+          function disableSwipe() {
+            document.removeEventListener("touchstart", startTouch);
+            document.removeEventListener("touchend", endTouch);
+          }
+
+          modal.addEventListener("shown.bs.modal", disableSwipe);
+          modal.addEventListener("hidden.bs.modal", enableSwipe);
+
+          const toggleIntroBtn = document.getElementById("toggleIntroBtn");
+          const introCollapse = document.getElementById("introCollapse");
+
+          introCollapse.addEventListener("show.bs.collapse", function () {
+            toggleIntroBtn.textContent = "Replier le texte";
+          });
+
+          introCollapse.addEventListener("hide.bs.collapse", function () {
+            toggleIntroBtn.textContent = "Lire la suite";
+          });
+
+          function handleKeydown(e) {
+            // Ne pas déclencher si un input ou textarea est actif
+            if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName))
+              return;
+
+            if (e.key === "ArrowRight" && currentStep < steps.length - 1) {
+              showStep(currentStep + 1);
+            }
+            if (e.key === "ArrowLeft" && currentStep > 0) {
+              showStep(currentStep - 1);
+            }
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
